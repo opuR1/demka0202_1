@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e106c7f74414562bfa7273bfce8c230" Name="Diagram1">
+        <EntityTypeShape EntityType="iv_de1Model.Clients" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.DocumentsByService" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.Genders" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.Manufacturers" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.ProductPhotos" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.Products" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.ProductSales" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.ServiceClient" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.ServicePhotos" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.Services" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iv_de1Model.Tags" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="iv_de1Model.FK__Clients__GenderI__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__ServiceCl__Clien__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__Documents__Clien__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__Products__Manufa__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__ProductPh__Produ__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__ProductSa__Produ__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__ProductSa__Clien__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__ServiceCl__Servi__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.FK__ServicePh__Servi__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.AttachedProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="iv_de1Model.TagOfClients" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

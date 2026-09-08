@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pr1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800" Icon="/beauty_logo.png" Background="{StaticResource MainBk}">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" x:Name="HeaderPanel" Background="{StaticResource SecondBk}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                <Button Content="Админ" Visibility="Collapsed" Margin="10" x:Name="btnAdmin" Height="25" Width="50" Background="{StaticResource AccentBk}" HorizontalAlignment="Right" Click="btnAdmin_Click"/>
+                <Button Content="Клиент" Visibility="Collapsed" Margin="10" x:Name="btnClient" Height="25" Width="50" Background="{StaticResource AccentBk}" HorizontalAlignment="Right" Click="btnClient_Click"/>
+                <Button Content="Назад" Visibility="Collapsed" Margin="10" x:Name="btnBack" Height="25" Width="50" Background="{StaticResource AccentBk}" HorizontalAlignment="Right" Click="btnBack_Click"/>
+                <TextBox Width="100" Height="25" Margin="10" x:Name="tbPassword" Visibility="Collapsed" TextChanged="tbPassword_TextChanged"/>
+            </StackPanel>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
     </Grid>
 </Window>

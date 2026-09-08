@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище iv_de1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AttachedProducts">
+    <Key>
+      <PropertyRef Name="MainProductId" />
+      <PropertyRef Name="AttachedProductId" />
+    </Key>
+    <Property Name="MainProductId" Type="int" Nullable="false" />
+    <Property Name="AttachedProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="255" />
+    <Property Name="GenderId" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="RegDay" Type="date" />
+  </EntityType>
+  <EntityType Name="DocumentsByService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientServiceId" Type="int" Nullable="false" />
+    <Property Name="DocumentPath" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Genders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Manufacturers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+  </EntityType>
+  <EntityType Name="ProductPhotos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="PhotoPath" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cost" Type="money" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="MainImagePath" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ManufacturerId" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductSales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SaleDate" Type="datetime" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ClientServiceId" Type="int" />
+  </EntityType>
+  <EntityType Name="ServiceClient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceId" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServicePhotos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceId" Type="int" Nullable="false" />
+    <Property Name="PhotoPath" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="255" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Discount" Type="int" />
+  </EntityType>
+  <EntityType Name="TagOfClients">
+    <Key>
+      <PropertyRef Name="ClientId" />
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="TagId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Color" Type="nchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__AttachedP__Attac__5AEE82B9">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="AttachedProducts" Type="Self.AttachedProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AttachedProducts">
+        <PropertyRef Name="AttachedProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AttachedP__MainP__59FA5E80">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="AttachedProducts" Type="Self.AttachedProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AttachedProducts">
+        <PropertyRef Name="MainProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Clients__GenderI__4CA06362">
+    <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+    <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Clients">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Documents__Clien__6D0D32F4">
+    <End Role="ServiceClient" Type="Self.ServiceClient" Multiplicity="1" />
+    <End Role="DocumentsByService" Type="Self.DocumentsByService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceClient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocumentsByService">
+        <PropertyRef Name="ClientServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductPh__Produ__5DCAEF64">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductPhotos" Type="Self.ProductPhotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductPhotos">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Manufa__571DF1D5">
+    <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSa__Clien__619B8048">
+    <End Role="ServiceClient" Type="Self.ServiceClient" Multiplicity="0..1" />
+    <End Role="ProductSales" Type="Self.ProductSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceClient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductSales">
+        <PropertyRef Name="ClientServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSa__Produ__60A75C0F">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductSales" Type="Self.ProductSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductSales">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceCl__Clien__52593CB8">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="ServiceClient" Type="Self.ServiceClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceClient">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceCl__Servi__5165187F">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceClient" Type="Self.ServiceClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceClient">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServicePh__Servi__6A30C649">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServicePhotos" Type="Self.ServicePhotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicePhotos">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TagOfClie__Clien__66603565">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="TagOfClients" Type="Self.TagOfClients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TagOfClients">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TagOfClie__TagId__6754599E">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+    <End Role="TagOfClients" Type="Self.TagOfClients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TagOfClients">
+        <PropertyRef Name="TagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище iv_de1ModelContainer">
+    <EntitySet Name="AttachedProducts" EntityType="Self.AttachedProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentsByService" EntityType="Self.DocumentsByService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductPhotos" EntityType="Self.ProductPhotos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductSales" EntityType="Self.ProductSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceClient" EntityType="Self.ServiceClient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServicePhotos" EntityType="Self.ServicePhotos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagOfClients" EntityType="Self.TagOfClients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__AttachedP__Attac__5AEE82B9" Association="Self.FK__AttachedP__Attac__5AEE82B9">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="AttachedProducts" EntitySet="AttachedProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AttachedP__MainP__59FA5E80" Association="Self.FK__AttachedP__MainP__59FA5E80">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="AttachedProducts" EntitySet="AttachedProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Clients__GenderI__4CA06362" Association="Self.FK__Clients__GenderI__4CA06362">
+      <End Role="Genders" EntitySet="Genders" />
+      <End Role="Clients" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Documents__Clien__6D0D32F4" Association="Self.FK__Documents__Clien__6D0D32F4">
+      <End Role="ServiceClient" EntitySet="ServiceClient" />
+      <End Role="DocumentsByService" EntitySet="DocumentsByService" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductPh__Produ__5DCAEF64" Association="Self.FK__ProductPh__Produ__5DCAEF64">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductPhotos" EntitySet="ProductPhotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Manufa__571DF1D5" Association="Self.FK__Products__Manufa__571DF1D5">
+      <End Role="Manufacturers" EntitySet="Manufacturers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSa__Clien__619B8048" Association="Self.FK__ProductSa__Clien__619B8048">
+      <End Role="ServiceClient" EntitySet="ServiceClient" />
+      <End Role="ProductSales" EntitySet="ProductSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSa__Produ__60A75C0F" Association="Self.FK__ProductSa__Produ__60A75C0F">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductSales" EntitySet="ProductSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceCl__Clien__52593CB8" Association="Self.FK__ServiceCl__Clien__52593CB8">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ServiceClient" EntitySet="ServiceClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceCl__Servi__5165187F" Association="Self.FK__ServiceCl__Servi__5165187F">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceClient" EntitySet="ServiceClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServicePh__Servi__6A30C649" Association="Self.FK__ServicePh__Servi__6A30C649">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServicePhotos" EntitySet="ServicePhotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TagOfClie__Clien__66603565" Association="Self.FK__TagOfClie__Clien__66603565">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="TagOfClients" EntitySet="TagOfClients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TagOfClie__TagId__6754599E" Association="Self.FK__TagOfClie__TagId__6754599E">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="TagOfClients" EntitySet="TagOfClients" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

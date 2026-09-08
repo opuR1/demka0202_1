@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:pr1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="MainBk" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="SecondBk" Color="#e1e4ff"/>
+        <SolidColorBrush x:Key="AccentBk" Color="#ff4a6d"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Tahoma"/>
+        </Style>
     </Application.Resources>
 </Application>
