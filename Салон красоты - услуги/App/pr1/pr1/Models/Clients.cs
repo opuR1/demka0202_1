@@ -30,6 +30,14 @@ namespace pr1.Models
         public Nullable<System.DateTime> Birthday { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> RegDay { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return $"{this.LastName} {this.FirstName} {this.MiddleName}";
+            }
+        }
     
         public virtual Genders Genders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -109,10 +109,16 @@ namespace pr1.Pages
         }
         private void lbServices_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(isAdmin)
+            Services selectedService = lbServices.SelectedItem as Services;
+            if (isAdmin)
             {
-                Services selectedService = lbServices.SelectedItem as Services;
+                
                 NavigationService.Navigate(new ServiceEdit(selectedService));
+            }
+            else
+            {
+                
+                NavigationService.Navigate(new ServiceClients(selectedService));
             }
         }
 

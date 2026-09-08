@@ -6,9 +6,38 @@
       xmlns:local="clr-namespace:pr1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ServiceClients">
-
+      Title="ServiceClients" Background="{StaticResource MainBk}">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Margin="0,20,0,0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="5,5,5,0">
+                    <TextBlock Text="Название:" Margin="0,0,0,15"/>
+                    <TextBlock Text="Стоимость:" Margin="0,0,0,15"/>
+                    <TextBlock Text="Длительность:" Margin="0,0,0,17"/>
+                    <TextBlock Text="Клиент:" Margin="0,0,0,20"/>
+                    <TextBlock Text="Время начала:" Margin="0,0,0,17"/>
+                    <TextBlock Text="Время окончания:" Margin="0,0,0,17"/>
+                    <TextBlock Text="Дата:"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,5,0,0">
+                    <TextBlock x:Name="tblName" Text="" Margin="0,0,0,15"/>
+                    <TextBlock x:Name="tblCost" Text="" Margin="0,0,0,15"/>
+                    <TextBlock x:Name="tblDur" Text="" Margin="0,0,0,15"/>
+                    <ComboBox x:Name="cmbClients" Width="200" Margin="0,0,0,15"/>
+                    <TextBox x:Name="tbStartTime" Width="200" Margin="0,0,0,15"/>
+                    <TextBlock x:Name="tblEndTime" Text="" Margin="0,0,0,15"/>
+                    <Calendar x:Name="clDate" SelectionMode="SingleDate" DisplayDateStart="09.08.2026"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,25,0,0">
+                <Button Content="Сохранить" x:Name="btnSave" Width="100" Height="50" Background="{StaticResource AccentBk}" FontWeight="Bold" Margin="0,0,10,0" Click="btnSave_Click"/>
+                <Button Content="Отменить" x:Name="btnDel" Width="100" Height="50" Background="{StaticResource AccentBk}" FontWeight="Bold" Click="btnCancel_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
