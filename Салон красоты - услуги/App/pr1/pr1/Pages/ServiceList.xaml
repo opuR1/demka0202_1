@@ -39,6 +39,7 @@
             </StackPanel>
             <Button Content="Add" x:Name="btnAdd" Visibility="Collapsed" Width="50" Height="25" Margin="10,0,0,0" Background="{StaticResource AccentBk}" Click="btnAdd_Click" FontWeight="Bold"/>
             <Button Content="Записать клиента" x:Name="btnAddClientService" Visibility="Collapsed" Width="150" Height="25" Margin="10,0,0,0" Background="{StaticResource AccentBk}" FontWeight="Bold" Click="btnAddClientService_Click"/>
+            <Button Content="Записи" x:Name="btnServices" Visibility="Collapsed" Width="50" Height="25" Margin="10,0,0,0" Background="{StaticResource AccentBk}" FontWeight="Bold" Click="btnServices_Click"/>
         </StackPanel>
         <ListBox Grid.Row="1" x:Name="lbServices" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="lbServices_MouseDoubleClick">
             <ListBox.ItemTemplate>

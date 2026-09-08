@@ -42,11 +42,13 @@ namespace pr1.Pages
             {
                 btnAdd.Visibility = Visibility.Visible;
                 btnAddClientService.Visibility = Visibility.Visible;
+                btnServices.Visibility = Visibility.Visible;
             }
             else
             {
                 btnAdd.Visibility = Visibility.Collapsed;
                 btnAddClientService.Visibility = Visibility.Collapsed;
+                btnServices.Visibility = Visibility.Collapsed;
             }
 
             ApplyFilters();
@@ -144,7 +146,13 @@ namespace pr1.Pages
 
         private void btnAddClientService_Click(object sender, RoutedEventArgs e)
         {
+            Services selectedService = lbServices.SelectedItem as Services;
+            NavigationService.Navigate(new ServiceClients(selectedService));
+        }
 
+        private void btnServices_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OrdersList());
         }
     }
 }

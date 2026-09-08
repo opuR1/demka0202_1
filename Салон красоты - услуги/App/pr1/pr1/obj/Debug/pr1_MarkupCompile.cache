@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\учеба\МДК.02.02(Иванов)\пр1\Салон красоты - услуги\App\pr1\pr1\App.xaml
-41920581174
+5-169528753
 2-1223955081
-221433428054
+23-652123367
 18-1236027637
-MainWindow.xaml;Pages\ServiceClients.xaml;Pages\ServiceEdit.xaml;Pages\ServiceList.xaml;
+MainWindow.xaml;Pages\OrdersList.xaml;Pages\ServiceClients.xaml;Pages\ServiceEdit.xaml;Pages\ServiceList.xaml;
 
 False
 

@@ -11,7 +11,8 @@ namespace pr1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media;
+
     public partial class ServiceClient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +27,54 @@ namespace pr1.Models
         public Nullable<System.DateTime> StartDate { get; set; }
         public int ClientId { get; set; }
     
+        public Nullable<System.DateTime> EndDate
+        {
+            get
+            {
+                if(StartDate.HasValue && Services != null)
+                {
+                    return StartDate.Value.AddMinutes(Services.Duration);
+                }
+                return null;
+            }
+
+        }
+        public Brush TimeColor
+        {
+            get
+            {
+                if (!StartDate.HasValue) return Brushes.Black;
+                TimeSpan diff = StartDate.Value - DateTime.Now;
+
+                if (diff.TotalHours < 1 && diff.TotalHours > 0)
+                {
+                    return Brushes.Red;
+                }
+                return Brushes.Black;
+            }
+        }
+        public string TimeLeft
+        {
+            get
+            {
+                if (!StartDate.HasValue)
+                    return "Дата не задана";
+
+                DateTime now = DateTime.Now;
+                DateTime start = StartDate.Value;
+
+                TimeSpan difference = start - now;
+
+                if (difference.TotalDays >= 1)
+                {
+                    return $"Осталось: {difference.Days} д. {difference.Hours} ч. {difference.Minutes} мин.";
+                }
+                else
+                {
+                    return $"Осталось: {difference.Hours} ч. {difference.Minutes} мин.";
+                }
+            }
+        }
         public virtual Clients Clients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DocumentsByService> DocumentsByService { get; set; }
